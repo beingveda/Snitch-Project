@@ -1,5 +1,7 @@
 import { Router } from "express";
-import registerValidator from "../validator/auth.validator.js";
+import {registerValidator,  loginValidator } from "../validator/auth.validator.js";
+import { login, register, refresh } from "../controller/auth.controller.js";
+
 const router = Router()
 
 /**
@@ -8,8 +10,21 @@ const router = Router()
  * @param req.body = {email,name,password}
  * @response res.status = 201 (if successful)
  */
-router.post("/register", registerValidator)
+router.post("/register", registerValidator,register)
 
+
+/**
+ * @POST /api/auth/login
+ * @param req
+ * @param req.body = {email,password}
+ * res.status = 200
+ */
+router.post("/login", loginValidator,login)
+
+/**
+ * @POST /api/auth/refresh
+ */
+router.post("/refresh",refresh)
 
 
 
