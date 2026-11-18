@@ -9,6 +9,10 @@ export function createAccessToken({ userId, role }){
     return accessToken
 }
 
+export function readAccessToken(accessToken){
+    return jwt.verify(accessToken, config.ACCESS_TOKEN_SECRET)
+}
+
 export function createRefreshToken({ userId, role }){
     const refreshToken = jwt.sign({
         userId, role        
@@ -20,3 +24,5 @@ export function createRefreshToken({ userId, role }){
 export function readRefreshToken(refreshToken){
     return jwt.verify(refreshToken, config.REFRESH_TOKEN_SECRET)
 }
+
+
