@@ -40,7 +40,7 @@ const productSchema = new mongoose.Schema({
                 enum:["XS","S","M","L","XL","XXL"],
                 required: true
             },
-            stocks:{
+            stock:{
                 type:Number,
                 min:0,
                 default:0
@@ -54,6 +54,6 @@ const productSchema = new mongoose.Schema({
     }
 })
 
-const productModel = mongoose.Model("products", productSchema)
+const productModel = mongoose.model("products", productSchema)
 
 export default productModel
